@@ -51,11 +51,29 @@ public class VentanaLogin {
     }
 
     private void login() {
+        String u = txtUsuario.getText().trim();
+        String p = txtClave.getText().trim();
+
+        if (p.isEmpty() || u.isEmpty()) {
+            JOptionPane.showMessageDialog(frame, "Por favor complete todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String Nombre = validarCredenciales(u,p);
+
+        if (Nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(frame, "El suario y la contraseña no coinciden, intente nuevamente", "Error de ingeso", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
     }
 
     private String validarCredenciales(String u, String p) {
-
+        for (Usuario user : USUARIOS) {
+            if (user.validarCredenciales(u,p)) {
+                return(user.getNombre());
+            }
+        }
         return "";
     }
 }

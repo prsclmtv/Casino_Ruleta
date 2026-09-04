@@ -37,6 +37,7 @@ public class VentanaRegistro {
         frame.add(btnRegresar);
 
         btnRegresar.addActionListener(actionEvenT -> IrSaludo());
+        btnIngresar.addActionListener(actionEvent -> Registro());
 
     }
 
