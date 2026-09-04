@@ -66,8 +66,8 @@ public class Casino_Ruleta {
         char tipo =  leerTipoApuesta(in);
         System.out.print("Ingrese el monto a apostar: ");
         int monto = in.nextInt();
-        int resultado = girarRuleta();
-        if (evaluarResultado(resultado,tipo)
+        int resultado_numero = girarRuleta();
+        boolean resultado_gano = evaluarResultado(resultado_numero,tipo);
     }
 
     public static char leerTipoApuesta(Scanner in) {
@@ -124,10 +124,16 @@ public class Casino_Ruleta {
         }
         return false;
     }
-    }
 
     public static void registrarResultado(int numero, int apuesta, boolean acierto) {
-
+        if (historialSize < MAX_HISTORIAL) {
+            historialNumeros[historialSize] = numero;
+            historialApuestas[historialSize] = apuesta;
+            historialAciertos[historialSize] = acierto;
+            historialSize++;
+        } else {
+            System.out.println("El historial de jugadas está lleno.");
+        }
     }
 
     public static void mostrarResultado(int numero, char tipo, int monto, boolean acierto) {
