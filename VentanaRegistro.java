@@ -1,14 +1,14 @@
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.Color;
-import javax.swing.BorderFactory;
 
-public class VentanaLogin {
+public class VentanaRegistro {
 
     public static final List USUARIOS = new ArrayList<>();
 
-    private final JFrame frame = new JFrame("Login - Casino Black Cat");
+    private final JFrame frame = new JFrame("Registro - Casino Black Cat");
+    private final JLabel lblNombre = new JLabel("Usuario:");
+    private final JTextField txtNombre = new JTextField();
     private final JLabel lblUsuario = new JLabel("Usuario:");
     private final JTextField txtUsuario = new JTextField();
     private final JLabel lblClave = new JLabel("Clave:");
@@ -16,9 +16,9 @@ public class VentanaLogin {
     private final JButton btnIngresar = new JButton("Ingresar");
     private final JButton btnRegresar = new JButton("Regresar");
 
-
-    public VentanaLogin() {
+    public VentanaRegistro() {
         frame.setLayout(null);
+
         lblUsuario.setBounds(30, 30, 80, 25);
         txtUsuario.setBounds(110, 30, 150, 25);
         lblClave.setBounds(30, 70, 80, 25);
@@ -26,6 +26,8 @@ public class VentanaLogin {
         btnIngresar.setBounds(30, 120, 100, 30);
         btnRegresar.setBounds(30, 170, 100, 30);
 
+        frame.add(lblNombre);
+        frame.add(txtNombre);
         frame.add(lblUsuario);
         frame.add(txtUsuario);
         frame.add(lblClave);
@@ -33,12 +35,12 @@ public class VentanaLogin {
         frame.add(btnIngresar);
         frame.add(btnRegresar);
 
-        btnRegresar.addActionListener(actionEvenT-> IrSaludo());
+        btnRegresar.addActionListener(actionEvenT -> IrSaludo());
 
     }
 
     public void mostrarVentana() {
-        frame.setSize(300,300);
+        frame.setSize(300, 300);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
@@ -50,13 +52,9 @@ public class VentanaLogin {
         saludo.mostrarVentana();
     }
 
-    private void login() {
+    private void registro() {
 
-    }
-
-    private String validarCredenciales(String u, String p) {
-
-        return "";
     }
 }
+
 

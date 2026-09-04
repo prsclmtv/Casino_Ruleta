@@ -1,7 +1,6 @@
 public class Launcher {
     public static void main(String[] args) {
-        VentanaLogin login = new VentanaLogin();
-        login.mostrarVentana();
-        Casino_Ruleta.menu();
+        VentanaSaludo saludo = new VentanaSaludo();
+        saludo.mostrarVentana();
 }
 }
