@@ -68,6 +68,9 @@ public class Casino_Ruleta {
         int monto = in.nextInt();
         int resultado_numero = girarRuleta();
         boolean resultado_gano = evaluarResultado(resultado_numero,tipo);
+        registrarResultado(resultado_numero, monto, resultado_gano);
+        mostrarResultado(resultado_numero,tipo,monto,resultado_gano);
+
     }
 
     public static char leerTipoApuesta(Scanner in) {
@@ -137,7 +140,15 @@ public class Casino_Ruleta {
     }
 
     public static void mostrarResultado(int numero, char tipo, int monto, boolean acierto) {
+        System.out.println("RESULTADO");
+        System.out.println("El número es: " + numero);
+        System.out.println("Apostaste al tipo: '" + tipo + "' con un monto de $" + monto);
 
+        if (acierto) {
+            System.out.println("Has ganado");
+        } else {
+            System.out.println("Has perdido");
+        }
     }
 
     public static void mostrarEstadisticas() {
