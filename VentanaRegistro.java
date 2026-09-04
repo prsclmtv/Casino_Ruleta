@@ -7,7 +7,7 @@ public class VentanaRegistro {
     public static final List USUARIOS = new ArrayList<>();
 
     private final JFrame frame = new JFrame("Registro - Casino Black Cat");
-    private final JLabel lblNombre = new JLabel("Usuario:");
+    private final JLabel lblNombre = new JLabel("Nombre:");
     private final JTextField txtNombre = new JTextField();
     private final JLabel lblUsuario = new JLabel("Usuario:");
     private final JTextField txtUsuario = new JTextField();
@@ -18,13 +18,14 @@ public class VentanaRegistro {
 
     public VentanaRegistro() {
         frame.setLayout(null);
-
-        lblUsuario.setBounds(30, 30, 80, 25);
-        txtUsuario.setBounds(110, 30, 150, 25);
-        lblClave.setBounds(30, 70, 80, 25);
-        txtClave.setBounds(110, 70, 150, 25);
-        btnIngresar.setBounds(30, 120, 100, 30);
-        btnRegresar.setBounds(30, 170, 100, 30);
+        lblNombre.setBounds(30, 30, 80, 25);
+        txtNombre.setBounds(110, 30, 150, 25);
+        lblUsuario.setBounds(30, 70, 80, 25);
+        txtUsuario.setBounds(110, 70, 150, 25);
+        lblClave.setBounds(30, 120, 80, 25);
+        txtClave.setBounds(110, 120, 150, 25);
+        btnIngresar.setBounds(30, 200, 100, 30);
+        btnRegresar.setBounds(30, 250, 100, 30);
 
         frame.add(lblNombre);
         frame.add(txtNombre);
@@ -40,7 +41,7 @@ public class VentanaRegistro {
     }
 
     public void mostrarVentana() {
-        frame.setSize(300, 300);
+        frame.setSize(300, 350);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
