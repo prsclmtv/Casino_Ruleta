@@ -53,8 +53,25 @@ public class VentanaRegistro {
         saludo.mostrarVentana();
     }
 
-    private void registro() {
+    private void IrLogin() {
+        this.frame.dispose();
+        VentanaLogin login = new VentanaLogin();
+        login.mostrarVentana();
+    }
 
+    private void registro() {
+        String o = txtNombre.getText().trim();
+        String p = txtUsuario.getText().trim();
+        String q = txtClave.getText().trim();
+
+        if (o.isEmpty() || p.isEmpty() || q.isEmpty()) {
+            JOptionPane.showMessageDialog(frame, "Por favor complete todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Usuario NuevoUsuario = new Usuario(o,p,q);
+        VentanaLogin.USUARIOS.add(NuevoUsuario);
+        IrLogin();
     }
 }
 
