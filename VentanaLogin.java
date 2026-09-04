@@ -1,8 +1,6 @@
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.Color;
-import javax.swing.BorderFactory;
 
 public class VentanaLogin {
 
@@ -34,6 +32,7 @@ public class VentanaLogin {
         frame.add(btnRegresar);
 
         btnRegresar.addActionListener(actionEvenT-> IrSaludo());
+        btnIngresar.addActionListener(actionEvenT-> login());
 
     }
 
@@ -62,9 +61,12 @@ public class VentanaLogin {
         String Nombre = validarCredenciales(u,p);
 
         if (Nombre.isEmpty()) {
-            JOptionPane.showMessageDialog(frame, "El suario y la contraseña no coinciden, intente nuevamente", "Error de ingeso", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(frame, "El usuario y la contraseña no coinciden, intente nuevamente", "Error de ingeso", JOptionPane.ERROR_MESSAGE);
             return;
         }
+
+        Ruleta ruleta = new Ruleta();
+        ruleta.menu();
 
     }
 
