@@ -1,7 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class Ruleta {
+public class Casino_Ruleta {
 
     public static final int MAX_HISTORIAL = 100;
     public static int[] historialNumeros = new int[MAX_HISTORIAL];
@@ -15,15 +15,21 @@ public class Ruleta {
     };
 
     public static void main(String[] args) {
+
         menu();
+        
     }
 
     public static void menu() {
-
+        mostrarMenu();
     }
 
     public static void mostrarMenu() {
-
+        System.out.println("Menú Ruleta");
+        System.out.println("1. Iniciar ronda");
+        System.out.println("2. Ver estadísticas");
+        System.out.println("3. Salir");
+        System.out.print("Ingrese una opción: ");
     }
 
     public static int leerOpcion(Scanner in) {
