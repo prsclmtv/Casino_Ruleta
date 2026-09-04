@@ -21,7 +21,9 @@ public class Casino_Ruleta {
     }
 
     public static void menu() {
+        Scanner in = new Scanner(System.in);
         mostrarMenu();
+        leerTipoApuesta(in);
     }
 
     public static void mostrarMenu() {
@@ -46,8 +48,28 @@ public class Casino_Ruleta {
     }
 
     public static char leerTipoApuesta(Scanner in) {
-
-        return ' ';
+        int opcion;
+        char tipo = ' ';
+        do {
+            System.out.println("Seleccione el tipo de apuesta:");
+            System.out.println("1. Rojo");
+            System.out.println("2. Negro");
+            System.out.println("3. Par");
+            System.out.println("4. Impar");
+            opcion = in.nextInt();
+            if (opcion == 1) {
+                tipo = 'R';
+            } else if (opcion == 2) {
+                tipo = 'N';
+            } else if (opcion == 3) {
+                tipo = 'P';
+            } else if (opcion == 4) {
+                tipo = 'I';
+            } else {
+                System.out.println("Opción inválida. Intente de nuevo.");
+            }
+        } while (opcion < 1 || opcion > 4);
+        return tipo;
     }
 
     public static int girarRuleta() {
