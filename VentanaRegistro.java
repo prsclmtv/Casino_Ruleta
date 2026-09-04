@@ -59,7 +59,7 @@ public class VentanaRegistro {
         login.mostrarVentana();
     }
 
-    private void registro() {
+    private void Registro() {
         String o = txtNombre.getText().trim();
         String p = txtUsuario.getText().trim();
         String q = txtClave.getText().trim();
@@ -69,9 +69,19 @@ public class VentanaRegistro {
             return;
         }
 
+
         Usuario NuevoUsuario = new Usuario(o,p,q);
         VentanaLogin.USUARIOS.add(NuevoUsuario);
         IrLogin();
+    }
+
+    private boolean ExisteUsuario(String Username) {
+        for (Usuario u : VentanaLogin.USUARIOS) {
+            if (u.getUsuario().equalsIgnoreCase(Username)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
 

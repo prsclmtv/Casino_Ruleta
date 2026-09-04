@@ -15,4 +15,5 @@ public class Usuario {
     public String getNombre() {
         return nombre;
     }
+    public String getUsuario() { return username;}
 }
