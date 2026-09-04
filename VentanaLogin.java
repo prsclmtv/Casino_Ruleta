@@ -1,4 +1,9 @@
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+
 public class VentanaLogin {
 
     public static final List USUARIOS = new ArrayList<>();
@@ -11,11 +16,27 @@ public class VentanaLogin {
     private final JButton btnIngresar = new JButton("Ingresar");
 
     public VentanaLogin() {
+        frame.setLayout(null);
+        lblUsuario.setBounds(30, 30, 80, 25);
+        txtUsuario.setBounds(110, 30, 150, 25);
+        lblClave.setBounds(30, 70, 80, 25);
+        txtClave.setBounds(110, 70, 150, 25);
+        btnIngresar.setBounds(30, 120, 100, 30);
+
+        frame.add(lblUsuario);
+        frame.add(txtUsuario);
+        frame.add(lblClave);
+        frame.add(txtClave);
+        frame.add(btnIngresar);
+
 
     }
 
     public void mostrarVentana() {
-// TODO: Centrar y mostrar la ventana
+        frame.setSize(300,200);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
     /**
      * Gestiona el inicio de sesión al presionar el botón.
@@ -37,10 +58,7 @@ public class VentanaLogin {
 // TODO: Recorrer la lista y validar las credenciales
         return "";
     }
-    /**
-     * Abre la ventana de registro para crear un nuevo usuario.
-     * Debe cerrar la ventana actual e invocar a VentanaRegistro.
-     */
+
     private void abrirRegistro() {
 // TODO: Cerrar la ventana actual y abrir la ventana de registro
     }
