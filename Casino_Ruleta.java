@@ -152,6 +152,39 @@ public class Casino_Ruleta {
     }
 
     public static void mostrarEstadisticas() {
+        if (historialSize == 0) {
+            System.out.println("\nAún no se han jugado rondas. ¡Anímate a jugar!\n");
+            return;
+        }
 
+        int montoTotalApostado = 0;
+        int totalAciertos = 0;
+        int gananciaNeta = 0;
+
+        for (int i = 0; i < historialSize; i++) {
+            int apuestaActual = historialApuestas[i];
+            montoTotalApostado += apuestaActual;
+            if (historialAciertos[i]) {
+                totalAciertos++;
+                gananciaNeta += apuestaActual;
+            } else {
+                gananciaNeta -= apuestaActual;
+            }
+        }
+
+        double porcentajeAciertos = (totalAciertos * 100.0) / historialSize;
+
+        System.out.println("\n=== ESTADÍSTICAS DEL JUGADOR ===");
+        System.out.println("Rondas jugadas: " + historialSize);
+        System.out.println("Monto total apostado: $" + montoTotalApostado);
+        System.out.println("Cantidad total de aciertos: " + totalAciertos);
+        System.out.println("Porcentaje de aciertos: " + porcentajeAciertos + "%");
+
+        if (gananciaNeta >= 0) {
+            System.out.println("Ganancia neta: +$" + gananciaNeta);
+        } else {
+            System.out.println("Pérdida neta: -$" + Math.abs(gananciaNeta));
+        }
+        System.out.println("================================\n");
     }
 }
