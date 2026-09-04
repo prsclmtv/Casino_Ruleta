@@ -66,7 +66,8 @@ public class Casino_Ruleta {
         char tipo =  leerTipoApuesta(in);
         System.out.print("Ingrese el monto a apostar: ");
         int monto = in.nextInt();
-        int ganador = girarRuleta();
+        int resultado = girarRuleta();
+        if (evaluarResultado(resultado,tipo)
     }
 
     public static char leerTipoApuesta(Scanner in) {
@@ -116,8 +117,13 @@ public class Casino_Ruleta {
     }
 
     public static boolean esRojo(int n) {
-
+        for (int i = 0; i < numerosRojos.length; i++) {
+            if (numerosRojos[i] == n) {
+                return true;
+            }
+        }
         return false;
+    }
     }
 
     public static void registrarResultado(int numero, int apuesta, boolean acierto) {
