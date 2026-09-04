@@ -23,6 +23,7 @@ public class Casino_Ruleta {
     public static void menu() {
         Scanner in = new Scanner(System.in);
         mostrarMenu();
+        leerOpcion(in);
         leerTipoApuesta(in);
     }
 
@@ -35,8 +36,13 @@ public class Casino_Ruleta {
     }
 
     public static int leerOpcion(Scanner in) {
-
-        return 0;
+        int opcion = 0;
+        if (in.hasNextInt()) {
+            opcion = in.nextInt();
+        } else {
+            in.next();
+        }
+        return opcion;
     }
 
     public static void ejecutarOpcion(int opcion, Scanner in) {
