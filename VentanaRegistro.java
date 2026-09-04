@@ -69,6 +69,10 @@ public class VentanaRegistro {
             return;
         }
 
+        if (ExisteUsuario(p)) {
+            JOptionPane.showMessageDialog(frame, "El usuario ya existe. Intente con otro.", "Error de registro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         Usuario NuevoUsuario = new Usuario(o,p,q);
         VentanaLogin.USUARIOS.add(NuevoUsuario);
