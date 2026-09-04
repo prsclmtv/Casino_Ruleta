@@ -63,7 +63,10 @@ public class Casino_Ruleta {
     }
 
     public static void iniciarRonda(Scanner in) {
-
+        char tipo =  leerTipoApuesta(in);
+        System.out.print("Ingrese el monto a apostar: ");
+        int monto = in.nextInt();
+        int ganador = girarRuleta();
     }
 
     public static char leerTipoApuesta(Scanner in) {
@@ -92,11 +95,22 @@ public class Casino_Ruleta {
     }
 
     public static int girarRuleta() {
-
-        return 0;
+        return rng.nextInt(37);
     }
 
     public static boolean evaluarResultado(int numero, char tipo) {
+        if (numero == 0) {
+            return false;
+        }
+        if (tipo == 'P' && numero % 2 == 0) {
+            return true;
+        } else if (tipo == 'I' && numero % 2 != 0) {
+            return true;
+        } else if (tipo == 'R' && esRojo(numero)) {
+            return true;
+        } else if (tipo == 'N' && !esRojo(numero)) {
+            return true;
+        }
 
         return false;
     }
