@@ -23,8 +23,8 @@ public class Casino_Ruleta {
     public static void menu() {
         Scanner in = new Scanner(System.in);
         mostrarMenu();
-        leerOpcion(in);
-        leerTipoApuesta(in);
+        int opcion = leerOpcion(in);
+        ejecutarOpcion(opcion,in);
     }
 
     public static void mostrarMenu() {
@@ -46,7 +46,20 @@ public class Casino_Ruleta {
     }
 
     public static void ejecutarOpcion(int opcion, Scanner in) {
-
+        switch (opcion) {
+            case 1:
+                iniciarRonda(in);
+                break;
+            case 2:
+                mostrarEstadisticas();
+                break;
+            case 3:
+                System.out.println("Saliendo de la Ruleta. ¡Gracias por jugar!");
+                break;
+            default:
+                System.out.println("Inválido, intente nuevamente.\n");
+                break;
+        }
     }
 
     public static void iniciarRonda(Scanner in) {
