@@ -16,4 +16,13 @@ public class Usuario {
         return nombre;
     }
     public String getUsuario() { return username;}
+
+    public static boolean ExisteUsuario(String Username) {
+        for (Usuario u : VentanaLogin.USUARIOS) {
+            if (u.getUsuario().equalsIgnoreCase(Username)) {
+                return true;
+            }
+        }
+        return false;
+}
 }

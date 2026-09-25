@@ -70,7 +70,7 @@ public class VentanaRegistro {
             return;
         }
 
-        if (ExisteUsuario(p)) {
+        if (Usuario.ExisteUsuario(p)) {
             JOptionPane.showMessageDialog(frame, "El usuario ya existe. Intente con otro.", "Error de registro", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -80,14 +80,8 @@ public class VentanaRegistro {
         IrLogin();
     }
 
-    private boolean ExisteUsuario(String Username) {
-        for (Usuario u : VentanaLogin.USUARIOS) {
-            if (u.getUsuario().equalsIgnoreCase(Username)) {
-                return true;
-            }
-        }
-        return false;
+
     }
-}
+
 
 
