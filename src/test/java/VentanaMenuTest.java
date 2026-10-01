@@ -6,7 +6,7 @@ class VentanaMenuTest {
     void metodoprobarventana() throws InterruptedException {
         VentanaMenu menu = new VentanaMenu();
         menu.mostrarVentana();
-        Thread.sleep(5000);
+        Thread.sleep(10000);
     }
 
 }
