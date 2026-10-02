@@ -1,6 +1,7 @@
 import javax.swing.*;
 
 public class VentanaRuleta {
+    private int saldo = 1100;
     private final JFrame frame = new JFrame("Ruleta - Casino");
 
     private final JLabel lblTipoApuesta = new JLabel("Tipo de apuesta:");
@@ -60,6 +61,32 @@ public class VentanaRuleta {
 
         frame.add(lblResultado);
         frame.add(separador);
+
+        btnGirar.addActionListener(e -> {
+            int monto = (int) spinnerMonto.getValue();
+
+            if (monto > saldo) {
+                lblResultado.setText("Saldo insuficiente para esa apuesta.");
+                return;
+            }
+
+            char tipo;
+            if (comboTipoApuesta.getSelectedItem().equals("Color")) {
+                tipo = comboColor.getSelectedItem().equals("Rojo") ? 'R' : 'N';
+            } else {
+                tipo = comboParidad.getSelectedItem().equals("Par") ? 'P' : 'I';
+            }
+
+            int numero = Ruleta.girarRuleta();
+            boolean acierto = Ruleta.evaluarResultado(numero, tipo);
+
+            saldo += acierto ? monto : -monto;
+
+            Ruleta.registrarResultado(numero, monto, acierto);
+
+            lblResultado.setText(Ruleta.mostrarResultado(numero, tipo, monto, acierto, saldo));
+            txtSaldo.setText("Saldo: " + saldo);
+        });
 
     }
 
