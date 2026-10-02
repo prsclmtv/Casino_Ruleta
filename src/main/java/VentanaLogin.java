@@ -65,9 +65,8 @@ public class VentanaLogin {
             return;
         }
 
-        Ruleta ruleta = new Ruleta();
-        ruleta.menu();
-
+        VentanaRuleta ruleta = new VentanaRuleta();
+        ruleta.mostrarVentana();
     }
 
     private String validarCredenciales(String u, String p) {

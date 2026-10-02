@@ -8,7 +8,7 @@ public class VentanaRuleta {
     private final JLabel lblParidad = new JLabel("Seleccione paridad:");
     private final JLabel lblMonto = new JLabel("Monto:");
 
-    private final JComboBox<String> comboTipoApuesta = new JComboBox<>(new String[]{"Color", "Paridad", "Número"});
+    private final JComboBox<String> comboTipoApuesta = new JComboBox<>(new String[]{"Color", "Paridad"});
     private final JComboBox<String> comboColor = new JComboBox<>(new String[]{"Rojo", "Negro"});
     private final JComboBox<String> comboParidad = new JComboBox<>(new String[]{"Par", "Impar"});
 
@@ -22,7 +22,6 @@ public class VentanaRuleta {
     public VentanaRuleta() {
         frame.setLayout(null);
 
-        // --- FILA 1: Tipo de Apuesta ---
         lblTipoApuesta.setBounds(30, 20, 140, 25);
         comboTipoApuesta.setBounds(170, 20, 350, 28);
 
@@ -61,6 +60,8 @@ public class VentanaRuleta {
 
         frame.add(lblResultado);
         frame.add(separador);
+
+
     }
 
     public void mostrarVentana() {

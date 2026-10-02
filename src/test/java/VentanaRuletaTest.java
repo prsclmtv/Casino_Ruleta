@@ -6,6 +6,6 @@ class VentanaRuletaTest {
     void metodoprobarventana() throws InterruptedException {
         VentanaRuleta menu = new VentanaRuleta();
         menu.mostrarVentana();
-        Thread.sleep(10000);
+        Thread.sleep(50000);
     }
 }
