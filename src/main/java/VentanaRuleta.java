@@ -61,8 +61,14 @@ public class VentanaRuleta {
         frame.add(lblResultado);
         frame.add(separador);
 
-
     }
+
+    public JButton getBtnGirar() { return btnGirar; }
+    public JComboBox<String> getComboTipoApuesta() { return comboTipoApuesta; }
+    public JComboBox<String> getComboColor() { return comboColor; }
+    public JComboBox<String> getComboParidad() { return comboParidad; }
+    public JSpinner getSpinnerMonto() { return spinnerMonto; }
+    public JTextField getTxtSaldo() { return txtSaldo; }
 
     public void mostrarVentana() {
         frame.setSize(570, 350);
