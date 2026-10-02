@@ -14,21 +14,12 @@ public class Ruleta {
             19, 21, 23, 25, 27, 30, 32, 34, 36
     };
 
-
     public static void menu() {
         Scanner in = new Scanner(System.in);
-        mostrarMenu();
         int opcion = leerOpcion(in);
         ejecutarOpcion(opcion,in);
     }
 
-    public static void mostrarMenu() {
-        System.out.println("Menú Ruleta");
-        System.out.println("1. Iniciar ronda");
-        System.out.println("2. Ver estadísticas");
-        System.out.println("3. Salir");
-        System.out.print("Ingrese una opción: ");
-    }
 
     public static int leerOpcion(Scanner in) {
         int opcion = 0;

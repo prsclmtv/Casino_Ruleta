@@ -1,12 +1,11 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class VentanaMenuTest {
+class VentanaRuletaTest {
     @Test
     void metodoprobarventana() throws InterruptedException {
-        VentanaMenu menu = new VentanaMenu();
+        VentanaRuleta menu = new VentanaRuleta();
         menu.mostrarVentana();
         Thread.sleep(10000);
     }
-
 }
