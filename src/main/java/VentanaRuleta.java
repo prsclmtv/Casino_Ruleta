@@ -16,7 +16,7 @@ public class VentanaRuleta {
     private final JButton btnGirar = new JButton("Girar");
     private final JTextField txtSaldo = new JTextField("Saldo: 1100");
 
-    private final JLabel lblResultado = new JLabel("Número 7 (Rojo) | Apuesta=R | Monto=$100 | GANASTE | Saldo=1100");
+    private final JLabel lblResultado = new JLabel("");
     private final JSeparator separador = new JSeparator();
 
     public VentanaRuleta() {
@@ -69,5 +69,9 @@ public class VentanaRuleta {
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setVisible(true);
+    }
+
+    public void setResultado(String texto) {
+        lblResultado.setText(texto);
     }
 }
