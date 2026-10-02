@@ -88,6 +88,11 @@ public class VentanaRuleta {
             txtSaldo.setText("Saldo: " + saldo);
         });
 
+        comboTipoApuesta.addActionListener(e -> {
+            boolean esColor = comboTipoApuesta.getSelectedItem().equals("Color");
+            comboColor.setEnabled(esColor);
+            comboParidad.setEnabled(!esColor);
+        });
     }
 
     public JButton getBtnGirar() { return btnGirar; }
