@@ -1,13 +1,11 @@
 package Vista;
 
+import Controlador.SessionController;
+
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class VentanaRegistro {
-
-    public static final List USUARIOS = new ArrayList<>();
-
+    SessionController session;
     private final JFrame frame = new JFrame("Registro - Casino Black Cat");
     private final JLabel lblNombre = new JLabel("Nombre:");
     private final JTextField txtNombre = new JTextField();
@@ -18,7 +16,7 @@ public class VentanaRegistro {
     private final JButton btnIngresar = new JButton("Ingresar");
     private final JButton btnRegresar = new JButton("Regresar");
 
-    public VentanaRegistro() {
+    public VentanaRegistro(SessionController SessionController) {
         frame.setLayout(null);
         lblNombre.setBounds(30, 30, 80, 25);
         txtNombre.setBounds(110, 30, 150, 25);
@@ -52,36 +50,32 @@ public class VentanaRegistro {
 
     private void IrSaludo() {
         this.frame.dispose();
-        VentanaSaludo saludo = new VentanaSaludo();
+        VentanaSaludo saludo = new VentanaSaludo(session);
         saludo.mostrarVentana();
     }
 
     private void IrLogin() {
         this.frame.dispose();
-        VentanaLogin login = new VentanaLogin();
+        VentanaLogin login = new VentanaLogin(session);
         login.mostrarVentana();
     }
 
     private void Registro() {
-        String o = txtNombre.getText().trim();
-        String p = txtUsuario.getText().trim();
-        String q = txtClave.getText().trim();
+        String nombre  = txtNombre.getText().trim();
+        String usuario = txtUsuario.getText().trim();
+        String clave   = new String(txtClave.getPassword()).trim();
 
-        if (o.isEmpty() || p.isEmpty() || q.isEmpty()) {
+        if (nombre.isEmpty() || usuario.isEmpty() || clave.isEmpty()) {
             JOptionPane.showMessageDialog(frame, "Por favor complete todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
-        if (Usuario.ExisteUsuario(p)) {
+        if (session.existeUsuario(usuario)) {
             JOptionPane.showMessageDialog(frame, "El usuario ya existe. Intente con otro.", "Error de registro", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
-        Usuario NuevoUsuario = new Usuario(p,q,o);
-        VentanaLogin.USUARIOS.add(NuevoUsuario);
+        session.registrarUsuario(usuario, clave, nombre);
         IrLogin();
     }
-
 
     }
 

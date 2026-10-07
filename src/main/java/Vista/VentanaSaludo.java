@@ -1,19 +1,19 @@
 package Vista;
+import Controlador.SessionController;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class VentanaSaludo {
-
-    public static final List USUARIOS = new ArrayList<>();
 
     private final JFrame frame = new JFrame("Casino Black Cat");
     private final JLabel lbEleccion = new JLabel("Elija si iniciar sesión o registrarse:");
     private final JButton btnIniciar = new JButton("Iniciar sesión");
     private final JButton btnRegistrar = new JButton("Regisrarse");
+    private final SessionController session;
 
-    public VentanaSaludo() {
+    public VentanaSaludo(SessionController session) {
+        this.session = session;
         frame.setLayout(null);
         lbEleccion.setBounds(30, 30, 400, 25);
         btnRegistrar.setBounds(30, 120, 100, 30);
@@ -35,13 +35,13 @@ public class VentanaSaludo {
 
     private void IrLogin() {
         this.frame.dispose();
-        VentanaLogin login = new VentanaLogin();
+        VentanaLogin login = new VentanaLogin(session);
         login.mostrarVentana();
     }
 
     private void IrRegistro() {
         this.frame.dispose();
-        VentanaRegistro registro = new VentanaRegistro();
+        VentanaRegistro registro = new VentanaRegistro(session);
         registro.mostrarVentana();
     }
 }
