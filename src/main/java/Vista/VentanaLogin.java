@@ -1,12 +1,10 @@
 package Vista;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
+import Controlador.SessionController;
 
 public class VentanaLogin {
 
-    public static final List <Usuario> USUARIOS = new ArrayList<>();
 
     private final JFrame frame = new JFrame("Login - Casino Black Cat");
     private final JLabel lblUsuario = new JLabel("Usuario:");
@@ -15,9 +13,9 @@ public class VentanaLogin {
     private final JPasswordField txtClave = new JPasswordField();
     private final JButton btnIngresar = new JButton("Ingresar");
     private final JButton btnRegresar = new JButton("Regresar");
+    SessionController session;
 
-
-    public VentanaLogin() {
+    public VentanaLogin(SessionController SessionController) {
         frame.setLayout(null);
         lblUsuario.setBounds(30, 30, 80, 25);
         txtUsuario.setBounds(110, 30, 150, 25);
@@ -47,37 +45,21 @@ public class VentanaLogin {
 
     private void IrSaludo() {
         this.frame.dispose();
-        VentanaSaludo saludo = new VentanaSaludo();
+        VentanaSaludo saludo = new VentanaSaludo(session);
         saludo.mostrarVentana();
     }
 
     private void login() {
         String u = txtUsuario.getText().trim();
-        String p = txtClave.getText().trim();
+        String clave = new String(txtClave.getPassword()).trim();
 
-        if (p.isEmpty() || u.isEmpty()) {
-            JOptionPane.showMessageDialog(frame, "Por favor complete todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+        if (!session.iniciarSesion(u, clave)) {
+            JOptionPane.showMessageDialog(frame, "El usuario y la contraseña no coinciden, intente nuevamente", "Error de ingreso", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
-        String Nombre = validarCredenciales(u,p);
-
-        if (Nombre.isEmpty()) {
-            JOptionPane.showMessageDialog(frame, "El usuario y la contraseña no coinciden, intente nuevamente", "Error de ingeso", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        this.frame.dispose();
-        VentanaMenu menu = new VentanaMenu();
-        menu.mostrarVentana();
+        frame.dispose();
+        new VentanaMenu(session).mostrarVentana();
     }
 
-    private String validarCredenciales(String u, String p) {
-        for (Usuario user : USUARIOS) {
-            if (user.validarCredenciales(u,p)) {
-                return(user.getNombre());
-            }
-        }
-        return "";
-    }
 }
 
