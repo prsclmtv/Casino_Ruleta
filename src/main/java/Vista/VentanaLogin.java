@@ -2,6 +2,7 @@ package Vista;
 
 import javax.swing.*;
 import Controlador.SessionController;
+import Controlador.RuletaController;
 
 public class VentanaLogin {
 
@@ -13,9 +14,12 @@ public class VentanaLogin {
     private final JPasswordField txtClave = new JPasswordField();
     private final JButton btnIngresar = new JButton("Ingresar");
     private final JButton btnRegresar = new JButton("Regresar");
-    SessionController session;
+    private final SessionController session;
+    private final RuletaController controlador;
 
-    public VentanaLogin(SessionController SessionController) {
+    public VentanaLogin(SessionController SessionController, RuletaController controlador) {
+        this.session = SessionController;
+        this.controlador = controlador;
         frame.setLayout(null);
         lblUsuario.setBounds(30, 30, 80, 25);
         txtUsuario.setBounds(110, 30, 150, 25);
@@ -45,7 +49,7 @@ public class VentanaLogin {
 
     private void IrSaludo() {
         this.frame.dispose();
-        VentanaSaludo saludo = new VentanaSaludo(session);
+        VentanaSaludo saludo = new VentanaSaludo(session, controlador);
         saludo.mostrarVentana();
     }
 
@@ -58,7 +62,7 @@ public class VentanaLogin {
             return;
         }
         frame.dispose();
-        new VentanaMenu(session).mostrarVentana();
+        new VentanaMenu(session,controlador).mostrarVentana();
     }
 
 }

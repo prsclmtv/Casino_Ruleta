@@ -16,12 +16,10 @@ public class VentanaMenu {
     private final JLabel lblTitulo = new JLabel("RULETA — Casino Black Cat");
     private final JTextArea texto = new JTextArea();
 
-    private final SessionController session;
     private final RuletaController ruletaController;
     private final JLabel lblSaldo = new JLabel();
 
-    public VentanaMenu(SessionController SessionController, SessionController session, RuletaController ruletaController) {
-        this.session = session;
+    public VentanaMenu(SessionController session, RuletaController ruletaController) {
         this.ruletaController = ruletaController;
         frame.setLayout(null);
         btnInicio.setBounds(30, 30, 120, 35);
@@ -63,7 +61,7 @@ public class VentanaMenu {
         btnSalir.addActionListener(e -> {
             session.cerrarSesion();
             frame.dispose();
-            new VentanaLogin(session).mostrarVentana();
+            new VentanaLogin(session,ruletaController).mostrarVentana();
         });
     }
 

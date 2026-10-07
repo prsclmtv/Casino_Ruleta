@@ -1,11 +1,13 @@
 package Vista;
 
 import Controlador.SessionController;
+import Controlador.RuletaController;
 
 import javax.swing.*;
 
 public class VentanaRegistro {
-    SessionController session;
+    private final SessionController session;
+    private final RuletaController ruletaControlador;
     private final JFrame frame = new JFrame("Registro - Casino Black Cat");
     private final JLabel lblNombre = new JLabel("Nombre:");
     private final JTextField txtNombre = new JTextField();
@@ -16,7 +18,10 @@ public class VentanaRegistro {
     private final JButton btnIngresar = new JButton("Ingresar");
     private final JButton btnRegresar = new JButton("Regresar");
 
-    public VentanaRegistro(SessionController SessionController) {
+    public VentanaRegistro(SessionController SessionController, RuletaController ruletaControlador) {
+        this.session = SessionController;
+        this.ruletaControlador = ruletaControlador;
+
         frame.setLayout(null);
         lblNombre.setBounds(30, 30, 80, 25);
         txtNombre.setBounds(110, 30, 150, 25);
@@ -50,13 +55,13 @@ public class VentanaRegistro {
 
     private void IrSaludo() {
         this.frame.dispose();
-        VentanaSaludo saludo = new VentanaSaludo(session);
+        VentanaSaludo saludo = new VentanaSaludo(session, ruletaControlador);
         saludo.mostrarVentana();
     }
 
     private void IrLogin() {
         this.frame.dispose();
-        VentanaLogin login = new VentanaLogin(session);
+        VentanaLogin login = new VentanaLogin(session, ruletaControlador);
         login.mostrarVentana();
     }
 

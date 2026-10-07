@@ -1,6 +1,6 @@
 package Vista;
 import Controlador.SessionController;
-
+import Controlador.RuletaController;
 import javax.swing.*;
 
 
@@ -11,9 +11,11 @@ public class VentanaSaludo {
     private final JButton btnIniciar = new JButton("Iniciar sesión");
     private final JButton btnRegistrar = new JButton("Regisrarse");
     private final SessionController session;
+    private final RuletaController ruletaControlador;
 
-    public VentanaSaludo(SessionController session) {
+    public VentanaSaludo(SessionController session, RuletaController ruletaControlador) {
         this.session = session;
+        this.ruletaControlador = ruletaControlador;
         frame.setLayout(null);
         lbEleccion.setBounds(30, 30, 400, 25);
         btnRegistrar.setBounds(30, 120, 100, 30);
@@ -35,13 +37,13 @@ public class VentanaSaludo {
 
     private void IrLogin() {
         this.frame.dispose();
-        VentanaLogin login = new VentanaLogin(session);
+        VentanaLogin login = new VentanaLogin(session,ruletaControlador);
         login.mostrarVentana();
     }
 
     private void IrRegistro() {
         this.frame.dispose();
-        VentanaRegistro registro = new VentanaRegistro(session);
+        VentanaRegistro registro = new VentanaRegistro(session, ruletaControlador);
         registro.mostrarVentana();
     }
 }

@@ -25,10 +25,7 @@ public class VentanaRuleta {
     private final JLabel lblResultado = new JLabel("");
     private final JSeparator separador = new JSeparator();
 
-    private final RuletaController controlador;
-
-    public VentanaRuleta(RuletaController controller, RuletaController controlador) {
-        this.controlador = controlador;
+    public VentanaRuleta(RuletaController controlador) {
         frame.setLayout(null);
 
         lblTipoApuesta.setBounds(30, 20, 140, 25);
@@ -80,11 +77,6 @@ public class VentanaRuleta {
 
         txtSaldo.setText("Saldo: " + controlador.getSaldo());
     }
-
-    public JButton getBtnGirar() { return btnGirar; }
-    public JComboBox<String> getComboTipoApuesta() { return comboTipoApuesta; }
-    public JSpinner getSpinnerMonto() { return spinnerMonto; }
-    public JTextField getTxtSaldo() { return txtSaldo; }
 
     public void mostrarVentana() {
         frame.setSize(570, 350);
