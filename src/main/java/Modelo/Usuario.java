@@ -1,3 +1,7 @@
+package Modelo;
+
+import Vista.VentanaLogin;
+
 public class Usuario {
     private String username;
     private String password;
@@ -17,12 +21,13 @@ public class Usuario {
     }
     public String getUsuario() { return username;}
 
-    public static boolean ExisteUsuario(String Username) {
-        for (Usuario u : VentanaLogin.USUARIOS) {
-            if (u.getUsuario().equalsIgnoreCase(Username)) {
-                return true;
-            }
+    public Usuario() { this("invitado", "", "Invitado"); }
+
+    public void setNombre(String nombre) {
+        if (nombre == null || nombre.isBlank()) {
+            throw new IllegalArgumentException("El nombre no puede estar vacío");
         }
-        return false;
+        this.nombre = nombre.trim();
+    }
 }
-}
+

@@ -1,3 +1,5 @@
+package Vista;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,9 +66,9 @@ public class VentanaLogin {
             JOptionPane.showMessageDialog(frame, "El usuario y la contraseña no coinciden, intente nuevamente", "Error de ingeso", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
-        VentanaRuleta ruleta = new VentanaRuleta();
-        ruleta.mostrarVentana();
+        this.frame.dispose();
+        VentanaMenu menu = new VentanaMenu();
+        menu.mostrarVentana();
     }
 
     private String validarCredenciales(String u, String p) {

@@ -1,3 +1,5 @@
+package Vista;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -75,7 +77,7 @@ public class VentanaRegistro {
             return;
         }
 
-        Usuario NuevoUsuario = new Usuario(o,p,q);
+        Usuario NuevoUsuario = new Usuario(p,q,o);
         VentanaLogin.USUARIOS.add(NuevoUsuario);
         IrLogin();
     }

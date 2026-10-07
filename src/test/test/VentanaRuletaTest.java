@@ -1,5 +1,5 @@
+import Vista.VentanaRuleta;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class VentanaRuletaTest {
     VentanaRuleta ruleta = new VentanaRuleta();

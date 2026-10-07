@@ -1,3 +1,7 @@
+package Launcher;
+
+import Vista.VentanaSaludo;
+
 public class Launcher {
     public static void main(String[] args) {
         VentanaSaludo saludo = new VentanaSaludo();

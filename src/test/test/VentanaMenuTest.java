@@ -1,5 +1,5 @@
+import Vista.VentanaMenu;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class VentanaMenuTest {
     @Test

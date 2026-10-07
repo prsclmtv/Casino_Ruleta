@@ -1,16 +1,16 @@
+package Vista;
+
 import javax.swing.*;
 
 public class VentanaMenu {
     private final JFrame frame = new JFrame("Menú - Casino Black Cat");
 
-    // Componentes de la izquierda (menú)
     private final JButton btnInicio = new JButton("Inicio");
     private final JButton btnJugar = new JButton("Jugar");
     private final JButton btnHistorial = new JButton("Historial");
     private final JButton btnSalir = new JButton("Salir");
     private final JLabel lblAdmin = new JLabel("Administrador");
 
-    // Componentes de la derecha (contenido)
     private final JLabel lblTitulo = new JLabel("RULETA — Casino Black Cat");
     private final JTextArea texto = new JTextArea();
 
