@@ -1,10 +1,11 @@
 package Launcher;
 
+import Controlador.SessionController;
 import Vista.VentanaSaludo;
 
 public class Launcher {
     public static void main(String[] args) {
-        VentanaSaludo saludo = new VentanaSaludo();
-        saludo.mostrarVentana();
-}
+        SessionController session = new SessionController();
+        new VentanaSaludo(session).mostrarVentana();
+    }
 }
