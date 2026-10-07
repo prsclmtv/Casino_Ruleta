@@ -2,8 +2,12 @@ package Vista;
 
 import javax.swing.*;
 
+import Controlador.RuletaController;
+import Modelo.TipoApuesta;
+
 public class VentanaRuleta {
-    private int saldo = 1100;
+
+
     private final JFrame frame = new JFrame("Ruleta - Casino");
 
     private final JLabel lblTipoApuesta = new JLabel("Tipo de apuesta:");
@@ -11,30 +15,27 @@ public class VentanaRuleta {
     private final JLabel lblParidad = new JLabel("Seleccione paridad:");
     private final JLabel lblMonto = new JLabel("Monto:");
 
-    private final JComboBox<String> comboTipoApuesta = new JComboBox<>(new String[]{"Color", "Paridad"});
-    private final JComboBox<String> comboColor = new JComboBox<>(new String[]{"Rojo", "Negro"});
-    private final JComboBox<String> comboParidad = new JComboBox<>(new String[]{"Par", "Impar"});
+    private final JComboBox<TipoApuesta> comboTipoApuesta = new JComboBox<>(TipoApuesta.values());
 
     private final JSpinner spinnerMonto = new JSpinner(new SpinnerNumberModel(100, 1, 10000, 10));
     private final JButton btnGirar = new JButton("Girar");
-    private final JTextField txtSaldo = new JTextField("Saldo: 1100");
+    private final JTextField txtSaldo = new JTextField("");
+
 
     private final JLabel lblResultado = new JLabel("");
     private final JSeparator separador = new JSeparator();
 
-    public VentanaRuleta() {
+    private final RuletaController controlador;
+
+    public VentanaRuleta(RuletaController controller, RuletaController controlador) {
+        this.controlador = controlador;
         frame.setLayout(null);
 
         lblTipoApuesta.setBounds(30, 20, 140, 25);
         comboTipoApuesta.setBounds(170, 20, 350, 28);
 
-
         lblColor.setBounds(30, 60, 140, 25);
-        comboColor.setBounds(170, 60, 350, 28);
-
         lblParidad.setBounds(30, 100, 140, 25);
-        comboParidad.setBounds(170, 100, 350, 28);
-        comboParidad.setEnabled(false);
 
         lblMonto.setBounds(30, 140, 140, 25);
         spinnerMonto.setBounds(170, 140, 110, 28);
@@ -51,10 +52,8 @@ public class VentanaRuleta {
         frame.add(comboTipoApuesta);
 
         frame.add(lblColor);
-        frame.add(comboColor);
-
         frame.add(lblParidad);
-        frame.add(comboParidad);
+
 
         frame.add(lblMonto);
         frame.add(spinnerMonto);
@@ -65,42 +64,25 @@ public class VentanaRuleta {
         frame.add(separador);
 
         btnGirar.addActionListener(e -> {
+            TipoApuesta tipo = (TipoApuesta) comboTipoApuesta.getSelectedItem();
             int monto = (int) spinnerMonto.getValue();
-
-            if (monto > saldo) {
-                lblResultado.setText("Saldo insuficiente para esa apuesta.");
-                return;
+            try {
+                lblResultado.setText(controlador.apostar(tipo, monto));
+                txtSaldo.setText("Saldo: " + controlador.getSaldo());
+            } catch (IllegalArgumentException ex) {
+                lblResultado.setText(ex.getMessage());
             }
-
-            char tipo;
-            if (comboTipoApuesta.getSelectedItem().equals("Color")) {
-                tipo = comboColor.getSelectedItem().equals("Rojo") ? 'R' : 'N';
-            } else {
-                tipo = comboParidad.getSelectedItem().equals("Par") ? 'P' : 'I';
-            }
-
-            int numero = Ruleta.girarRuleta();
-            boolean acierto = Ruleta.evaluarResultado(numero, tipo);
-
-            saldo += acierto ? monto : -monto;
-
-            Ruleta.registrarResultado(numero, monto, acierto);
-
-            lblResultado.setText(Ruleta.mostrarResultado(numero, tipo, monto, acierto, saldo));
-            txtSaldo.setText("Saldo: " + saldo);
         });
 
         comboTipoApuesta.addActionListener(e -> {
             boolean esColor = comboTipoApuesta.getSelectedItem().equals("Color");
-            comboColor.setEnabled(esColor);
-            comboParidad.setEnabled(!esColor);
         });
+
+        txtSaldo.setText("Saldo: " + controlador.getSaldo());
     }
 
     public JButton getBtnGirar() { return btnGirar; }
     public JComboBox<String> getComboTipoApuesta() { return comboTipoApuesta; }
-    public JComboBox<String> getComboColor() { return comboColor; }
-    public JComboBox<String> getComboParidad() { return comboParidad; }
     public JSpinner getSpinnerMonto() { return spinnerMonto; }
     public JTextField getTxtSaldo() { return txtSaldo; }
 
